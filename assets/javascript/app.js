@@ -1,10 +1,10 @@
-var ghibliMovies = ["Kiki's Delivery Service", "My Neighbor Totoro", "Spirited Away", "Princess Mononoke", "Nausicaa", "Howl's Moving Castle", "The Wind Rises"];
+ var ghibliMovies = ["Kiki's Delivery Service", "My Neighbor Totoro", "Spirited Away", "Princess Mononoke", "Nausicaa", "Howl's Moving Castle", "The Wind Rises"];
   
  function makeButtons() {
      $("#buttonsDiv").empty(); //empties div to avoid duplicates
 
     //make buttons with attributes for each item in array
-    for (var i = 0; i < ghibliMovies.length; i++); {
+    for (var i = 0; i < ghibliMovies.length; i++) {
         var button = $("<button>");
         button.html(ghibliMovies[i]);
         button.addClass("btn btn-outline-secondary");
@@ -14,7 +14,7 @@ var ghibliMovies = ["Kiki's Delivery Service", "My Neighbor Totoro", "Spirited A
     }
  }
  
- makeButtons();
+makeButtons();
 
  
 
