@@ -45,7 +45,7 @@ function displayGifs () {
                 gifImage.addClass("gif");
                 gifImage.attr("src", response[i].images.fixed_height_still.url);
                 gifImage.attr("data-still", response[i].images.fixed_height_still.url);
-                gifImage.attr("data-animate", response[i].images.fixed_height_still.url);
+                gifImage.attr("data-animate", response[i].images.fixed_height.url);
                 gifImage.attr("data-state", "still");
 
                 //place image and rating in div
