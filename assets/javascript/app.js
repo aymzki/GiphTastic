@@ -27,16 +27,26 @@ $("button").on("click", function () {
         // Storing an array of results in the results variable
         var results = response.data;
         //loop to ceate a div that contains image and filters ratings
-        for (var i = 0; i < results.length; i++) {
-            if (results[i].rating !== "r" && results[i].rating !== "pg-13") {
+        for (var i = 0; i < response.length; i++) {
+            if (response[i].rating !== "r") {
                 var gifDiv = $("<div>");
-                var rating = results[i].rating;
+                var rating = response[i].rating;
                 var p = $("<p>").text("Rating: " + rating);
-                var animeImage = $("<img>");
-                animeImage.attr("src", results[i].images.fixed_height.url);
-                gifDiv.append(p);
-                gifDiv.append(animeImage);
+                p.addClass("text-center");
 
+                //and has the gif be still image when it loads
+                var gifImage = $("<img>");
+                gifImage.addClass("gif");
+                gifImage.attr("src", response[i].images.fixed_height_still.url);
+                gifImage.attr("data-still", response[i].images.fixed_height_still.url);
+                gifImage.attr("data-animate", response[i].images.fixed_height_still.url);
+                gifImage.attr("data-state", "still");
+
+                //place image and rating in div
+                gifDiv.append(p);
+                gifDiv.append(gifImage);
+
+                //put gifDiv at top of the content
                 $("#gifs-appear-here").prepend(gifDiv);
             }
         }
