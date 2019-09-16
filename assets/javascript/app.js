@@ -1,4 +1,4 @@
-var animeArray = ["Kiki's Delivery Service", "My Neighbor Totoro", "Spirited Away", "Princess Mononoke", "Howl's Moving Castle", "Attack on Titan", "Naruto", "Durarara", "Sailor Moon", "Dragon Ball Z"];
+var animeArray = ["My Neighbor Totoro", "Spirited Away", "Princess Mononoke", "Howl's Moving Castle", "Attack on Titan", "Naruto", "Durarara", "Sailor Moon", "Dragon Ball Z"];
 
 //create buttons for already existing titles in the array
 function makeButtons() {
@@ -9,6 +9,7 @@ function makeButtons() {
         var button = $("<button>");
         button.html(animeArray[i]);
         button.addClass("btn btn-outline-secondary");
+        button.attr("id", "anime-btn");
         button.attr("anime-title", animeArray[i]);
         button.text(animeArray[i]);
         $("#buttonsDiv").append(button);
@@ -17,9 +18,10 @@ function makeButtons() {
 
 //function to display gifs
 function displayGifs () {
-
+    //grab and store anime title
     var thisAnime = $(this).attr("anime-title");
     console.log(thisAnime);
+    //make queryURL using the anime title
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + thisAnime + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
     console.log(queryURL);
 
@@ -29,7 +31,7 @@ function displayGifs () {
         method: "GET"
     }).then(function (response) {
         // Storing an array of results in the results variable
-        var results = response.data;
+        var response = response.data;
         //loop to ceate a div that contains image and filters ratings
         for (var i = 0; i < response.length; i++) {
             if (response[i].rating !== "r") {
@@ -66,6 +68,20 @@ $("#submit-btn").on("click", function(event) {
 	makeButtons();
 });
 
+// listens for a click of any of the anime-btns, then performs the displayGifs function
+$(document).on("click", "#anime-btn", displayGifs);
 
+// starts and stops animated gif on click
+$(document).on("click", ".gif", function() {
+	var state = $(this).attr("data-state");
+
+	if (state === "still") {
+		$(this).attr("src", $(this).attr("data-animate"));
+		$(this).attr("data-state", "animate");
+	} else {
+		$(this).attr("src", $(this).attr("data-still"));
+		$(this).attr("data-state", "still");
+	}
+});
 
 makeButtons();
