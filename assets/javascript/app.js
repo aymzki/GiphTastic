@@ -1,23 +1,27 @@
-var anime = ["Kiki's Delivery Service", "My Neighbor Totoro", "Spirited Away", "Princess Mononoke", "Howl's Moving Castle", "Attack on Titan", "Naruto", "Durarara", "Sailor Moon", "Dragon Ball Z"];
+var animeArray = ["Kiki's Delivery Service", "My Neighbor Totoro", "Spirited Away", "Princess Mononoke", "Howl's Moving Castle", "Attack on Titan", "Naruto", "Durarara", "Sailor Moon", "Dragon Ball Z"];
 
+//create buttons for already existing titles in the array
 function makeButtons() {
     $("#buttonsDiv").empty(); //empties div to avoid duplicates
 
     //make buttons with attributes for each item in array
-    for (var i = 0; i < anime.length; i++) {
+    for (var i = 0; i < animeArray.length; i++) {
         var button = $("<button>");
-        button.html(anime[i]);
+        button.html(animeArray[i]);
         button.addClass("btn btn-outline-secondary");
-        button.attr("anime-title", anime[i]);
-        button.text(anime[i]);
+        button.attr("anime-title", animeArray[i]);
+        button.text(animeArray[i]);
         $("#buttonsDiv").append(button);
     }
 }
-//what happens when you click the button with title
-$("button").on("click", function () {
+
+//function to display gifs
+function displayGifs () {
+
     var thisAnime = $(this).attr("anime-title");
     console.log(thisAnime);
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + thisAnime + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
+    console.log(queryURL);
 
     // ajax call gets and returns the response object from query url
     $.ajax({
@@ -51,6 +55,17 @@ $("button").on("click", function () {
             }
         }
     });
+};
+
+// when the submit button is clicked, the input value is pushed to the anime array and rendered into a new button
+$("#submit-btn").on("click", function(event) {
+	event.preventDefault();
+
+	var addAnime = $("#animeInput").val().trim();
+	animeArray.push(addAnime);
+	makeButtons();
 });
+
+
 
 makeButtons();
