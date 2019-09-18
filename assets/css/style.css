@@ -10,6 +10,7 @@ header {
 
 #title{
     color: white;
+    text-shadow: 2px 2px 4px #000000;
 }
 
 label {
@@ -46,6 +47,9 @@ btn {
  
 .btn-space {
     margin-bottom: 20px;
+}
+.btn-outline-secondary {
+	margin: 5px;
 }
     
 gif {
