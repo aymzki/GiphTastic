@@ -38,11 +38,15 @@ top: 500px;
     justify-content: space-between;
     }
     
-btn {
+.btn {
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
     justify-content: space-between;
+}
+
+.btn-primary {
+    margin: 10px;
 }
  
 .btn-space {
