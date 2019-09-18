@@ -10,34 +10,29 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- Linking jQuery library-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Rajdhani&display=swap" rel="stylesheet">
     <title>Anime Gifs</title>
 </head>
 
 <body>
-    <div class="top-half">
-        <h1>Anime Gifs</h1>
+    <div class="top-half container-fluid fixed-top">
+        <!--<h1>Anime Gifs</h1>-->
+    </div>
 
-        <!--Select Box -->ˆ
-        <form id="character-form">
-
-            <!-- Label for Text Box -->
-            <label for="anime-input">Have other favorites? Add more here!</label>
-
-            <!-- Text Input Box -->
-            <input type="text" id="animeInput"><br>
-
-            <!-- Submit Button -->
-            <input id="submit-btn" type="submit" value="Submit">
+    <div id="lower-half" class="container-fluid main-content">
+        <form>
+            <div class="form-group col-xs-4">
+                <label for="anime-input">Not finding your favorite?</label>
+                <input type="text" class="form-control" id="animeInput" placeholder="Add one here!">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
         </form>
 
-        <div id="buttonsDiv"></div>
+        <div id="buttonsDiv" class="btn-toolbar my-2"></div>
+
+        <div id="gifs-appear-here">
+        </div>
     </div>
-
-
-    <div id="gifs-appear-here">
-    </div>
-
-
 
     <!--Linking Javascript page-->
     <script src="assets/javascript/app.js"></script>

@@ -63,7 +63,7 @@ function displayGifs () {
 $("#submit-btn").on("click", function(event) {
 	event.preventDefault();
 
-	var addAnime = $("#animeInput").val().trim();
+    var addAnime = $("#animeInput").val().trim();
 	animeArray.push(addAnime);
 	makeButtons();
 });
@@ -84,4 +84,4 @@ $(document).on("click", ".gif", function() {
 	}
 });
 
-makeButtons();
+makeButtons()
