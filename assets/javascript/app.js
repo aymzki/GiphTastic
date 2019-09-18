@@ -65,7 +65,7 @@ $("#submit-btn").on("click", function(event) {
 
     var addAnime = $("#animeInput").val().trim();
 	animeArray.push(addAnime);
-	makeButtons();
+    makeButtons();
 });
 
 // listens for a click of any of the anime-btns, then performs the displayGifs function
@@ -84,4 +84,4 @@ $(document).on("click", ".gif", function() {
 	}
 });
 
-makeButtons()
+makeButtons();
